@@ -1,0 +1,10 @@
+[
+  {
+    "id": "u_a63dbfde",
+    "name": "Dept. Coordinator",
+    "email": "coordinator@demo.edu",
+    "role": "coordinator",
+    "department": "CSE",
+    "passwordHash": "$2a$10$qTVmokAiPBXYEJVxoTh0T.dJRVAFbmxibX8xtCAvGLwlFWim/eCRq"
+  }
+]

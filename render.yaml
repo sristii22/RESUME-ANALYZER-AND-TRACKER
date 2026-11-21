@@ -1,0 +1,15 @@
+# Render Blueprint: deploys OpportunityTracker as a free Node web service.
+# On render.com: New + → Blueprint → pick this repository → Apply.
+services:
+  - type: web
+    name: opportunitytracker-sristi
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
