@@ -1,39 +1,31 @@
-# OpportunityTracker — demo login
+# OpportunityTracker
 
-## Run it
+**Most resumes get rejected by software before a human ever reads them. OpportunityTracker shows you why, and what to fix.**
+
+Drop in your resume and watch a magnifying glass sweep across it while the app pulls out your skills, scores it the way an ATS would, and ranks every internship by how well you fit. On the other side, university coordinators get one dashboard for every opening, every application and every placement.
+
+## What it does
+
+- **Reads your resume like a recruiter's software.** Upload a PDF, DOCX or TXT file. PDF.js extracts the text right in your browser, then the app gives you an ATS score out of 100 with specific tips to raise it.
+- **Shows exactly where you fall short.** Pick any role to see the skills you already have in green and the gaps in red, plus advice on what to learn first to close them.
+- **Finds the roles worth your time.** Search by company, role or skill. Sort by salary, duration or newest. Open any listing for the full breakdown of responsibilities and requirements.
+- **Keeps your shortlist in one place.** Bookmark roles, filter them by category, and see your average salary and top category at a glance.
+- **Turns placements into a story.** A coordinator dashboard with live metrics, a four-year placement trend, branch-wise results and top recruiters.
+- **Locks the door properly.** A real Express backend with bcrypt-hashed passwords, JWT sessions in httpOnly cookies, protected pages, and rate limiting that shuts out an IP after 5 wrong passwords in 15 minutes.
+- **Feels alive.** A splash intro, typewriter headlines, a particle network that drifts away from your cursor, counters that tick up, and cards that spring into place.
+
+## Built with
+
+JavaScript · HTML · CSS · Node.js · Express · PDF.js · bcryptjs · jsonwebtoken · cookie-parser · Lucide icons
+
+## Try it locally
 
 ```bash
 npm install
 npm start
 ```
 
-Then open **http://localhost:3000** (you'll land on the login page).
-
-Demo login: **coordinator@demo.edu / demo123**. On the login page, **Fill for me** types it in for you.
-
-> VS Code Live Server (port 5500) can't run the backend. Use `npm start` and port 3000 instead.
-
-## What's included
-
-| File | What it does |
-|---|---|
-| `login.html` | Animated intro + login page (splash, particles, typewriter, demo-credentials card) |
-| `server.js` | Express server: serves the site, handles login, protects the dashboard |
-| `data/users.json` | Users, with bcrypt-hashed passwords (never plain text) |
-| `scripts/add-user.js` | Adds or updates a login |
-| `.env.example` | Settings. Copy to `.env` |
-
-## API
-
-| Method | Path | |
-|---|---|---|
-| POST | `/api/auth/login` | `{ email, password, remember }` sets an httpOnly session cookie |
-| GET | `/api/auth/me` | Current user, or 401 |
-| POST | `/api/auth/logout` | Signs out |
-| GET | `/logout` | Signs out and goes back to the login page |
-
-Every `.html` page except `login.html` and `intro.html` needs a login. Without one, you're sent to `/login.html`.
-After 5 wrong passwords in 15 minutes, logins from that IP are blocked for a while.
+Open **http://localhost:3000**, then sign in with `coordinator@demo.edu` / `demo123`, or click **Fill for me** and watch the login type itself in.
 
 ## Add another user
 
@@ -45,24 +37,4 @@ npm run add-user -- student@demo.edu "Priya Sharma" secret123 student
 
 Copy `.env.example` to `.env` and set `JWT_SECRET` to a long random string. Without it, everyone is signed out whenever the server restarts.
 
-## Add a sign-out link to the dashboard (optional)
-
-```html
-<a class="nav-item" href="/logout">Sign out</a>
-```
-
-## Put it online (Render, free)
-
-1. **Upload to GitHub.** Create a new repository named `opportunity-tracker` on github.com. Then, in this folder:
-   ```bash
-   git init
-   git add .
-   git commit -m "OpportunityTracker"
-   git branch -M main
-   git remote add origin https://github.com/sristii22/opportunity-tracker.git
-   git push -u origin main
-   ```
-2. **Deploy on Render.** On render.com, click **New + → Blueprint**, pick the `opportunity-tracker` repository, then **Apply**. `render.yaml` sets everything up, including a secret key.
-3. After a few minutes your site is live at **https://opportunitytracker-sristi.onrender.com**. Open it and sign in with the demo login.
-
-On Render's free plan the site sleeps after 15 minutes without visitors. The first visit after that can take up to a minute to load.
+> Job listings and placement figures are sample data, built to show what the platform can do.
